@@ -110,14 +110,21 @@ countdownBtn.addEventListener('click', () => {
         
         const interval = setInterval(() => {
             countdownBtn.innerText = counter;
-            counter--;
             
+            if (pairs === 6) {
+                clearInterval(interval);
+                alert ("Great short term memory!");
+                return counter;
+            } else if (pairs <= 5) {
+                counter--;
+            }  
+
             if (counter < -1) {
                 clearInterval(interval);
                 alert("Times Up!")
                 countdownBtn.innerText = 'Finished!'
-                lockBoard = true;
-            } 
+                lockBoard = true;           
+            }  
         }, 1000);
     }    
     startCountDown(60);
