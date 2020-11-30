@@ -16,7 +16,6 @@ function flipCard() {
         firstCard = this;
         return;
     }
-    
     secondCard = this;
     
     checkForMatch();
@@ -32,6 +31,10 @@ checkForMatch = () => {
         unflipCards();
     }
     p.innerText = "Score = " + pairs;
+
+    // if (pairs === 6) {
+    //     alert ("You did it faster!");
+    // }
 }
 
 disableCards = () => {
@@ -91,17 +94,17 @@ instructions.appendChild(p);
 
 const btns = document.querySelector('.buttons');
 
-
 // countdown timer
 const countdownBtn = document.createElement("button");
 countdownBtn.type = "button";
 countdownBtn.classList.add("countdown");
-countdownBtn.innerText = "Start countdown!"
+countdownBtn.innerText = "Play!"
 
 btns.appendChild(countdownBtn);
 
 countdownBtn.addEventListener('click', () => {
     lockBoard = false;
+    
     startCountDown = (seconds) => {
         let counter = seconds;
         
@@ -114,10 +117,10 @@ countdownBtn.addEventListener('click', () => {
                 alert("Times Up!")
                 countdownBtn.innerText = 'Finished!'
                 lockBoard = true;
-            }
+            } 
         }, 1000);
     }    
-    startCountDown(60)
+    startCountDown(60);
 })
 
 //WIP
