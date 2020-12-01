@@ -16,6 +16,7 @@ Other additonal features that are work in progress include:
 - table to keep 3 of best time taken
 - randomising images (so that it is not always the same 6)
 - mobile responsiveness 
+- refactoring my wet code 
 
 Please feel free to give me any feedback or suggestions as I am still learning and any advice would be good for me.
 
