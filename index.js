@@ -31,10 +31,6 @@ checkForMatch = () => {
         unflipCards();
     }
     p.innerText = "Score = " + pairs;
-
-    // if (pairs === 6) {
-    //     alert ("You did it faster!");
-    // }
 }
 
 disableCards = () => {
@@ -46,12 +42,13 @@ disableCards = () => {
 
 unflipCards = () => {
     lockBoard = true;
+
     setTimeout(() => {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
 
         resetBoard();
-    }, 800);
+    }, 600);
 }
 
 resetBoard = () => {
@@ -59,13 +56,13 @@ resetBoard = () => {
     [firstCard, secondCard] = [null, null];
 }
 
-
-(shuffle = () => {
+shuffle = () => {
     cards.forEach(card => {
         let randomPosition = Math.floor(Math.random() * 12);
         card.style.order = randomPosition;    
     });
-}) ();
+}
+shuffle();
 
 cards.forEach(card => {
     card.addEventListener('click', flipCard);
@@ -92,56 +89,95 @@ instructions.appendChild(h2);
 instructions.appendChild(h3);
 instructions.appendChild(p);
 
+// countdown timer & table
 const btns = document.querySelector('.buttons');
-
-// countdown timer
 const countdownBtn = document.createElement("button");
 countdownBtn.type = "button";
 countdownBtn.classList.add("countdown");
-countdownBtn.innerText = "Play!"
-
+countdownBtn.innerText = "Play!";
 btns.appendChild(countdownBtn);
+
+const table = document.querySelector(".table");
+const tableRow = document.createElement("tr");
+const tableData = document.createElement("td");
+tableRow.classList.add("times");
+table.appendChild(tableRow);
+table.appendChild(tableData);
+
+let fastestTimesArr = [];
 
 countdownBtn.addEventListener('click', () => {
     lockBoard = false;
-    
+    countdownBtn.style.backgroundColor = "red";
+    countdownBtn.style.color = "white";
+
     startCountDown = (seconds) => {
         let counter = seconds;
-        
+        startAgainBtn.classList.remove('hide');
+
         const interval = setInterval(() => {
             countdownBtn.innerText = counter;
             
-            if (pairs === 6) {
+            if (pairs === 6 && fastestTimesArr.length < 3) {
                 clearInterval(interval);
-                alert ("Great short term memory!");
-                return counter;
+                countdownBtn.innerText = 'Done!';
+                const time = 60 - counter - 1;
+                tableData.style.textAlign = "center";
+                fastestTimesArr.push(time);
+                tableData.innerText = time;   
+
+                // for (let i = 0; i < fastestTimesArr; i++) {
+                    // fastestTimesArr[i] = tableData.innerText;
+                    console.log(fastestTimesArr);          
+                
+                // }
+
             } else if (pairs <= 5) {
                 counter--;
             }  
-
+            
             if (counter < -1) {
                 clearInterval(interval);
-                alert("Times Up!")
-                countdownBtn.innerText = 'Finished!'
+                alert("Times Up!");
+                countdownBtn.classList.add('outOfTime');
+                countdownBtn.innerText = 'Out of time!';
                 lockBoard = true;           
-            }  
+            }
+
+            startAgainBtn.onclick = () => {
+                console.log('onclick test')
+                startOver();
+                clearInterval(interval);
+            }
         }, 1000);
-    }    
+
+    }          
     startCountDown(60);
 })
 
-//WIP
+// start over button
+const startAgainBtn = document.createElement("button");
+startAgainBtn.type = "button";
+startAgainBtn.classList.add("startAgain");
+startAgainBtn.innerText = "Start again";
 
-// start again button
-// const startAgainBtn = document.createElement("button");
-// startAgainBtn.type = "button";
-// startAgainBtn.classList.add('startAgain');
-// startAgainBtn.innerText = "Start again";
+btns.appendChild(startAgainBtn);
+startAgainBtn.classList.add('hide')
 
-// btns.appendChild(startAgainBtn);
-
-// startAgainBtn.addEventListener('click', () => {
-//     console.log('test')
-
-// })
+startOver = () => {
+    cards.forEach(card => {
+        card.classList.remove('flip');
+        card.removeEventListener('click', flipCard);
+        card.addEventListener('click', flipCard);
+    })
+    shuffle();
+    
+    lockBoard = true;
+    pairs = 0;
+    countdownBtn.innerText = "Play!";
+    countdownBtn.style.backgroundColor = "yellow";
+    countdownBtn.style.color = "black";
+    p.innerText = "Score = " + pairs;
+    startAgainBtn.classList.add('hide')
+}
 
