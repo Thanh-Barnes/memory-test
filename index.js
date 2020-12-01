@@ -81,12 +81,12 @@ const p = document.createElement('p');
 h1.innerText = "Thanh's"
 h1.classList.add('name');
 h1b.innerText = "Memory Test";
-h2.innerText = "You have 60 seconds "
-h3.innerText = "to get as many pairs as you can!"
+h2.innerText = "How good is your memory?"
+// h3.innerText = "to get as many pairs as you can!"
 instructions.appendChild(h1);
 instructions.appendChild(h1b);
 instructions.appendChild(h2);
-instructions.appendChild(h3);
+// instructions.appendChild(h3);
 instructions.appendChild(p);
 
 // countdown timer & table
