@@ -1,4 +1,5 @@
 # Memory Test - How good is your memory?
+Live version - https://thanh-barnes.github.io/memory-test/
 
 This game was based on the Vanilla JS tutorial at:
 https://medium.com/free-code-camp/vanilla-javascript-tutorial-build-a-memory-game-in-30-minutes-e542c4447eae
