@@ -13,9 +13,9 @@ Some of the extra features include:
 - current time taken displayed
 
 Other additonal features that are work in progress include:
-- table to keep 3 of best time taken
+- table to keep 3 of best time taken - 3/12 can store the previous scores but need to do sort and keep only 3
 - randomising images (so that it is not always the same 6)
-- mobile responsiveness 
+- mobile responsiveness - 3/12 started to fix but still need work
 - refactoring my wet code 
 
 Please feel free to give me any feedback or suggestions as I am still learning and any advice would be good for me.
