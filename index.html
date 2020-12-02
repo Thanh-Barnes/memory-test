@@ -8,78 +8,81 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
-
+    
 </head>
 <body>
-
-    <div class="memory-game">
-        <div class="memory-card" data-framework="cat">
-            <img src="gameImg/cat.png" alt="Cat" class="front-face">
-            <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
-        </div>
-        <div class="memory-card" data-framework="cat">
-            <img src="gameImg/cat.png" alt="Cat" class="front-face">
-            <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
-        </div>
-        <div class="memory-card" data-framework="errors">
-            <img src="gameImg/errors.png" alt="Errors" class="front-face">
-            <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
-        </div> 
-        <div class="memory-card" data-framework="errors">
-            <img src="gameImg/errors.png" alt="Errors" class="front-face">
-            <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
-        </div>
-        <div class="memory-card" data-framework="Finished">
-            <img src="gameImg/finished.png" alt="finished" class="front-face">
-            <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
-        </div> 
-        <div class="memory-card" data-framework="Finished">
-            <img src="gameImg/finished.png" alt="finished" class="front-face">
-            <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
-        </div> 
-        <div class="memory-card" data-framework="framework">
-            <img src="gameImg/framework.png" alt="framework" class="front-face">
-            <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
-        </div> 
-        <div class="memory-card" data-framework="framework">
-            <img src="gameImg/framework.png" alt="framework" class="front-face">
-            <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
-        </div> 
-        <div class="memory-card" data-framework="team">
-            <img src="gameImg/team.png" alt="Team" class="front-face">
-            <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
-        </div> 
-        <div class="memory-card" data-framework="team">
-            <img src="gameImg/team.png" alt="Team" class="front-face">
-            <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
-        </div> 
-        <div class="memory-card" data-framework="zoom">
-            <img src="gameImg/zoom.png" alt="Zoom" class="front-face">
-            <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
-        </div> 
-        <div class="memory-card" data-framework="zoom">
-            <img src="gameImg/zoom.png" alt="Zoom" class="front-face">
-            <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
-        </div>
-    </div>
-   
     <div class="container">
-        <div class="instructions"></div>
-        <div class="buttons"></div>
-        <div>
-            <table class="table">
-                <tr class="fastestTimes">
-
-                    <!-- to change to fastest time table -->
-                    <th>Time taken</th>
-                </tr>
-                <!-- <tr class='times'>
-                    <th>rereafdf</th>
-                </tr> -->
-            </table>
+        <div id="info">
+            <h1 class="name">Memory Test</h1>
+            <h2>How good is your memory?</h2>
+            <p class="toGo"></p>
         </div>
     </div>
-
+    
+    <div>
+        <div class="container">
+            <div class="table">
+                <table>
+                    <tr class="fastestTimes">
+                        <th>Fastest times</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="play"></div>
+            <div class="start"></div>
+    </div>  
+    
+        <div class="memory-game">
+            <div class="memory-card" data-framework="cat">
+                <img src="gameImg/cat.png" alt="Cat" class="front-face">
+                <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="cat">
+                <img src="gameImg/cat.png" alt="Cat" class="front-face">
+                <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="errors">
+                <img src="gameImg/errors.png" alt="Errors" class="front-face">
+                <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
+            </div> 
+            <div class="memory-card" data-framework="errors">
+                <img src="gameImg/errors.png" alt="Errors" class="front-face">
+                <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Finished">
+                <img src="gameImg/finished.png" alt="finished" class="front-face">
+                <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
+            </div> 
+            <div class="memory-card" data-framework="Finished">
+                <img src="gameImg/finished.png" alt="finished" class="front-face">
+                <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
+            </div> 
+            <div class="memory-card" data-framework="framework">
+                <img src="gameImg/framework.png" alt="framework" class="front-face">
+                <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
+            </div> 
+            <div class="memory-card" data-framework="framework">
+                <img src="gameImg/framework.png" alt="framework" class="front-face">
+                <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
+            </div> 
+            <div class="memory-card" data-framework="team">
+                <img src="gameImg/team.png" alt="Team" class="front-face">
+                <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
+            </div> 
+            <div class="memory-card" data-framework="team">
+                <img src="gameImg/team.png" alt="Team" class="front-face">
+                <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
+            </div> 
+            <div class="memory-card" data-framework="zoom">
+                <img src="gameImg/zoom.png" alt="Zoom" class="front-face">
+                <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
+            </div> 
+            <div class="memory-card" data-framework="zoom">
+                <img src="gameImg/zoom.png" alt="Zoom" class="front-face">
+                <img src="gameImg/dory.png" alt="Memory Card" class="back-face">
+            </div>
+        </div>
+    </div>
     <!-- javascript file -->
     <script src="index.js"></script>
     <!-- <script src="features.js"></script> -->
