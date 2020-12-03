@@ -1,16 +1,15 @@
 const cards = document.querySelectorAll('.memory-card');
-
 let hasFlippedCard = false;
 let lockBoard = true;
 let firstCard, secondCard;
 let pairs = 0;
 let toGo = document.querySelector(".toGo")
 
-pairsToFind = () => {
-    toGo = toGo.innerText = (6-pairs) + " pairs to find";
-    return toGo;
-}
-pairsToFind();
+// pairs to find - done but not impleted yet
+// pairsToFind = () => {
+//     let pairsToGo = 6 - pairs;
+//     toGo.innerText = pairsToGo + " pairs to go";
+// }
 
 function flipCard() {
     if (lockBoard) return;
@@ -24,7 +23,6 @@ function flipCard() {
         return;
     }
     secondCard = this;
-    
     checkForMatch();
 }
 
@@ -37,12 +35,12 @@ checkForMatch = () => {
     } else {
         unflipCards();
     }
+    // pairsToFind();
 }
 
 disableCards = () => {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
-
     resetBoard();
 }
 
@@ -77,25 +75,34 @@ cards.forEach(card => {
 
 // ADDITIONAL FEATURES
 
-// pairs found
-// const info = document.querySelector('#info');
-// const p = document.createElement('p');
-// info.appendChild(p);
+// sorting array for fastest times display
+bubbleSort = (inputArr) => {
+    for (let i = 0; i < inputArr.length; i++) {
+        
+        for (let j = 0; j < inputArr.length; j++) {
+            let temp = '';
+            let firstNum = j;
+            let secondNum = (j+1);
+            
+            if (inputArr[firstNum] >= inputArr[secondNum]) {
+                temp = inputArr[secondNum];
+                inputArr[secondNum] = inputArr[firstNum];
+                inputArr[firstNum] = temp;
+            }             
+        }
+    }
+    return inputArr;
+}
 
-// countdown timer & table
+
+// countdown timer 
 const btns = document.querySelector('.play');
 const countdownBtn = document.createElement("button");
 countdownBtn.type = "button";
 countdownBtn.classList.add("countdown");
 countdownBtn.innerText = "Play!";
 btns.appendChild(countdownBtn);
-
-const table = document.querySelector(".table");
-const tableRow = document.createElement("tr");
-const tableData = document.createElement("td");
-tableRow.classList.add("times");
-table.appendChild(tableRow);
-table.appendChild(tableData);
+const fastTimes = document.querySelector('.fastTimes');
 
 let fastestTimesArr = [];
 
@@ -112,37 +119,30 @@ countdownBtn.addEventListener('click', () => {
             countdownBtn.style.backgroundColor = "orange";
             countdownBtn.innerText = counter;
             
-            if (pairs === 6 && fastestTimesArr.length < 3) {
-                clearInterval(interval);
-                countdownBtn.innerText = 'Done!';
-                countdownBtn.style.backgroundColor = "red";
-                countdownBtn.style.color = "white";
-                tableData.style.textAlign = "center";
+            if (pairs === 6) {
+                    clearInterval(interval);
+                    countdownBtn.innerText = 'Done!';
+                    countdownBtn.style.backgroundColor = "red";
+                    countdownBtn.style.color = "white";
+    
+                    const time = 60 - counter - 1;
+                    fastestTimesArr.push(time);
+                    bubbleSort(fastestTimesArr);
 
-                const time = 60 - counter - 1;
-                fastestTimesArr.push(time);
-                let timeStr = ""
-
-                for (let i = 0; i < fastestTimesArr.length; i++) {
-                    timeStr = timeStr + fastestTimesArr[i] + "s ";
-                    // let tableData = document.createElement("td");
-                    tableData.innerText = timeStr;   
+                    let timeStr = "";
+                    let len = fastestTimesArr.length;
                     
-
-
-
-                }
-
-
-                // for (let i = 0; i < fastestTimesArr; i++) {
-                    // fastestTimesArr[i] = tableData.innerText;
-                    console.log(fastestTimesArr);          
-                
-                // }
-
+                    for (let i = 0; i < len; i++) {
+                        if (i === 3) {
+                            break;
+                        }
+                        timeStr = timeStr + fastestTimesArr[i] + "s ";
+                        fastTimes.innerText = timeStr + "  ";   
+                    }
+                    alert ("Completed in " + time + " seconds.")
             } else if (pairs <= 5) {
                 counter--;
-            }  
+            }
             
             if (counter < -1) {
                 clearInterval(interval);
@@ -189,7 +189,7 @@ startOver = () => {
     countdownBtn.innerText = "Play!";
     countdownBtn.style.backgroundColor = "rgb(16, 224, 16)";
     countdownBtn.style.color = "black";
-    pairsToFind();
+    // pairsToFind();
     startAgainBtn.classList.add('hide');
 }
 
