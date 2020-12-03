@@ -18,3 +18,5 @@ Other additonal features that are work in progress include:
 Please feel free to give me any feedback or suggestions as I am still learning and any advice would be good for me.
 
 Thank you for visiting!
+
+<img src="memoryGamePic.png" alt="Game image" />
